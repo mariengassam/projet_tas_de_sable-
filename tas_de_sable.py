@@ -28,3 +28,10 @@ racine.mainloop()#lancement de la boucle principale
 #########################################
 def Initialisation ():
 
+
+
+
+#creation de la grille
+for ligne in range(5):
+    for colonne in range(5):
+        Button(fenetre, text='L%s-C%s' % (ligne, colonne), borderwidth=1).grid(row=ligne, column=colonne)
