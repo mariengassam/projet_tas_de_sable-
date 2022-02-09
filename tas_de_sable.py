@@ -9,5 +9,22 @@
 #########################################
 
 
+# 1ere etape: créer une interface graphique qui permet d’afficher un canevas et un bouton qui créera la configuration aléatoire;
 
-Changement
+import tkinter
+from tkinter.font import _FontDescription 
+racine=tk.Tk()# widget racine
+#Creation d'une liste à deux dimension = variable globale 
+int global = liste[][]
+
+canvas=tk.canvas(racine, bg="red",)# ajout du widget canvas (permet de dessiner des objets)
+
+button=tk.button()# widget du widget bouton pour la configuration aléatoire
+
+racine.mainloop()#lancement de la boucle principale
+
+#########################################
+#Creation de la _Fonction initialisation (etape 3)
+#########################################
+def Initialisation ():
+
