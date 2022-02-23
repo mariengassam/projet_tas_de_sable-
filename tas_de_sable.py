@@ -9,29 +9,141 @@
 #########################################
 
 
-# 1ere etape: créer une interface graphique qui permet d’afficher un canevas et un bouton qui créera la configuration aléatoire;
-
+#######################
+# import des librairies
 import tkinter
-from tkinter.font import _FontDescription 
-racine=tk.Tk()# widget racine
-#Creation d'une liste à deux dimension = variable globale 
-int global = liste[][]
-
-canvas=tk.canvas(racine, bg="red",)# ajout du widget canvas (permet de dessiner des objets)
-
-button=tk.button()# widget du widget bouton pour la configuration aléatoire
-
-racine.mainloop()#lancement de la boucle principale
-
-#########################################
-#Creation de la _Fonction initialisation (etape 3)
-#########################################
-def Initialisation ():
+import random as rd
 
 
 
+############################
+# Définition des constantes
 
-#creation de la grille
-for ligne in range(5):
-    for colonne in range(5):
-        Button(fenetre, text='L%s-C%s' % (ligne, colonne), borderwidth=1).grid(row=ligne, column=colonne)
+# hauteur du canevas
+HAUTEUR = 600
+# largeur du canevas
+LARGEUR = 600
+# taille de la grille
+n = 4
+
+
+# choix des couleurs
+COUL_CASE = "red"
+COUL_VIDE = "white"
+
+
+######################
+# variables globales
+grille = []
+
+
+
+#######################
+# fonctions
+
+
+"""def config_a ():
+liste_initiale = []
+for j in range(n):#grande boucle
+    grille = []
+    for i in range(n):#boucle imbriquée
+        tableau.append(N*[0])
+    grille.append(tableau)
+for col in liste_initiale:
+    for elem in col:
+        print(elem, end = " ")
+    x0,y0=i,j
+    x1,y1=(i+1),(y+1)
+    canvas.create_rectange()
+    canvas"""
+####################################
+#Configuration vide de grains de sables
+
+
+global grille
+
+def initialisation():
+    """ fonction qui initialise la configuration courante et l’affichage de la grille avec une
+configuration vide de grains de sable"""
+    for i in range(N):
+        grille.append([0]*N) 
+
+
+def config_c():
+    """ fonction qui met à jour l’affichage de la grille à partir de la configuration courante, couleurs=>config"""
+    for i in range(N):
+        for j in range(N):
+            if rd.uniform(0, 4) < P:
+                terrain[i][j] = 1
+                couleur = COUL_MUR
+            if rd.uniform(0, 1) < P:
+                terrain[i][j] = 2
+                couleur="blue"
+            if rd.uniform(0, 1) < P:
+                terrain[i][j] = 3
+                couleur="yellow"
+            if rd.uniform(0, 1) < P:
+                terrain[i][j] = 4
+                couleur="green"
+            else:
+                couleur = COUL_VIDE#configuration vide de grain de sable cases blanches
+                
+            largeur = LARGEUR // N
+            hauteur = HAUTEUR // N
+            x0, y0 = i * largeur, j * hauteur
+            x1, y1 = (i + 1) * largeur, (j + 1) * hauteur
+            canvas.create_rectangle((x0, y0), (x1, y1), fill=couleur)
+
+def config_aléatoire():
+    """calcul d’une configuration aléatoire""""
+for i in range (n):
+    for j in range(n)
+        if grille[i][j]>3
+            if i==0 and j==0:
+                grille[i][j+1]+=1
+                grille[i+1][j]+=1
+            if i==0 and j<=n-2 and j>0:
+                grille[i][j-1]+=1
+                grille[i][j+1]+=1
+                grille[i+1][j]+=1
+            if i==0 and j==n-1:
+                grille[i][j-1]+=1
+                grille[i+1][j]+=1
+            if i>0 and i<n-2 and j==0:
+                grille[i-1][j]+=1
+                grille[i+1][j]+=1
+                grille[i][j+1]+=1
+            if i>0 and i<n-2 and j>0 and j<n-2:
+                grille[i][j-1]+=1
+                grille[i][j+1]+=1
+                grille[i-1][j]+=1
+                grille[i+1][j]+=1
+            if i>0 and i<n-2 and j==n-1:
+                grille[i][j-1]+=1
+                grille[i-1][j]+=1
+                grille[i+1][j]+=1
+            if i==n-1 and j==0:
+                grille[i][j+1]+=1
+                grille[i-1][j]+=1
+            if i==n-1 and j>0 and j<n-2:
+                grille[i][j-1]+=1
+                grille[i][j+1]+=1
+                grille[i-1][j]+=1
+            if i==n-1 and j==n-1:
+                grille[i][j-1]+=1
+                grille[i-1][j]+=1
+    
+
+
+
+
+#######################
+# programme principal
+
+racine=tk.Tk()
+racine.title("Sandpile model")
+canvas=tk.canvas(racine, bg="red")# ajout du widget canvas 
+button1=tk.button(racine, tex="Configuration aléatoire" width=LARGEUR, height=HAUTEUR, bg="white", command=config_a)# widget bouton 
+racine.bind("<Button-1>", config_aleatoire)
+
+racine.mainloop()
