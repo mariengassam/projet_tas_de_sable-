@@ -32,7 +32,7 @@ COUL_CASE = "red"
 COUL_VIDE = "white"
 
 
-######################
+###################m###
 # variables globales
 grille = []
 
@@ -69,7 +69,7 @@ configuration vide de grains de sable"""
         grille.append([0]*N) 
 
 
-def config_c():
+def config_couleurs():
     """ fonction qui met à jour l’affichage de la grille à partir de la configuration courante, couleurs=>config"""
     for i in range(N):
         for j in range(N):
@@ -94,7 +94,7 @@ def config_c():
             x1, y1 = (i + 1) * largeur, (j + 1) * hauteur
             canvas.create_rectangle((x0, y0), (x1, y1), fill=couleur)
 
-def config_aléatoire():
+def config_avalanche():
     """calcul d’une configuration aléatoire""""
 for i in range (n):
     for j in range(n)
@@ -134,16 +134,17 @@ for i in range (n):
                 grille[i-1][j]+=1
     
 
-
-
-
 #######################
 # programme principal
 
 racine=tk.Tk()
 racine.title("Sandpile model")
 canvas=tk.canvas(racine, bg="red")# ajout du widget canvas 
-button1=tk.button(racine, tex="Configuration aléatoire" width=LARGEUR, height=HAUTEUR, bg="white", command=config_a)# widget bouton 
+button1=tk.button(racine, tex="initialisation" width=LARGEUR, height=HAUTEUR, bg="white", command=config_a)# widget bouton initialisation
+button2=tk.button(racine, tex="Avalanche" width=LARGEUR, height=HAUTEUR, bg="white", command=config_a)# widget bouton avalanche
 racine.bind("<Button-1>", config_aleatoire)
+canvas.bind("Buttton2",config_avalanche)
 
 racine.mainloop()
+
+
